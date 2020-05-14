@@ -43,7 +43,7 @@ class output{
         var Coins_2 = this.coins % (256 * 256) ;
         var Cbuf = Buffer.alloc(8);
         Cbuf.writeUIntBE(Coins_1,0,6);
-        Cbuf.writeUInt16LE(Coins_2,5,2);
+        Cbuf.writeUInt16BE(Coins_2,5,2);
         var Lbuf = Buffer.alloc(4);
         Lbuf.writeUInt32BE(this.Length,0,32);
         var Pbuf = Buffer.alloc(this.Length,this.Public_key,"utf-8");
