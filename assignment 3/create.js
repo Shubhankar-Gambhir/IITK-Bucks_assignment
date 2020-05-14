@@ -39,14 +39,14 @@ class output{
     }
 
     CalcBuffer(){
-        var Coins_1 = this.coins / 256 ;
-        var Coins_2 = Coins_1 / 256 ;
+        var Coins_1 = this.coins / (256 * 256) ;
+        var Coins_2 = this.coins % (256 * 256) ;
         var Cbuf = Buffer.alloc(8);
-        Cbuf.writeUIntBE(this.Coins,2,6);
-        Cbuf.writeUInt16LE(Coins_2,0,2);
+        Cbuf.writeUIntBE(Coins_1,0,6);
+        Cbuf.writeUInt16LE(Coins_2,5,2);
         var Lbuf = Buffer.alloc(4);
         Lbuf.writeUInt32BE(this.Length,0,32);
-        var Pbuf = Buffer.alloc(this.Length,this.Public_key,'base64');
+        var Pbuf = Buffer.alloc(this.Length,this.Public_key,"utf-8");
         var arr = [Cbuf,Lbuf,Pbuf] ;
 
         var buf = Buffer.concat(arr);
@@ -80,8 +80,8 @@ for (i = 0;i < Num_Output;i++){
     console.log('Output: ',i+1)
     var Coins = Number(prompt('Coins: '));
     var Public_key_path = prompt('Public_key file: ');
-    var Public_key = fs.readFileSync(Public_key_path, encoding = 'utf8');
-    var Length = Buffer.byteLength(Public_key,"base64")
+    var Public_key = fs.readFileSync(Public_key_path, encoding = "utf-8")
+    var Length = Buffer.byteLength(Public_key,"utf-8")
     var new_Output = new output(Coins,Length,Public_key);
     arr = [buf,new_Output.Buffer];
     buf = Buffer.concat(arr) ;
