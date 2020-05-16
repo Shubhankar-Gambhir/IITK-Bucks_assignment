@@ -1,18 +1,17 @@
 const fs = require('fs');
 const prompt = require('prompt-sync')({sigint: true});
+const crypto = require('crypto);
 
 const input = require('./Read_Transaction_Classes/Read_Input');
-const output = require('./Read_Transaction_Classes/Read_Output');
+const outut = require('./Read_Transaction_Classes/Read_Output');
 
 var i ;
 
 var file = prompt('Enter File path: ');
 var Byte = fs.readFileSync(file);
 
-var IDbuf = Byte.slice(0,32);
-var ID = IDbuf.toString('hex');
+var ID = crypto.createHash('SHA256').update(Byte).digest('hex');
 console.log('Transaction_ID: ',ID)
-Byte = Byte.slice(32,Byte.byteLength);
 
 N_Input = Byte.slice(0,4);
 N_Input = N_Input.readUInt32BE(0);
