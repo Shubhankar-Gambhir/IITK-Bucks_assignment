@@ -42,8 +42,6 @@ for (i = 0;i < Num_Output;i++){
 
 var ID = crypto.createHash('sha256').update(Uint8Array.from(buf)).digest('hex');
 var Transaction_ID = Buffer.alloc(32,ID,'hex')
-arr = [Transaction_ID, buf];
-buf = Buffer.concat(arr) ;
 
 file = '../Transactions/' + ID + '.dat';
 fs.createWriteStream(file);
