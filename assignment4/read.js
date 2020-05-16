@@ -1,6 +1,6 @@
 const fs = require('fs');
 const prompt = require('prompt-sync')({sigint: true});
-const crypto = require('crypto);
+const crypto = require('crypto');
 
 const input = require('./Read_Transaction_Classes/Read_Input');
 const output = require('./Read_Transaction_Classes/Read_Output');
