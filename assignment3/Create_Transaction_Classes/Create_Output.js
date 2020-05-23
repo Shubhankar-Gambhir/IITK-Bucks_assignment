@@ -10,8 +10,6 @@ class output{
     }
 
     CalcBuffer(){
-        //var Coins_1 = this.coins >> 32 ;
-        //var Coins_2 = this.coins - Coins_1 << 32 ;
         var biguint = BigInt(this.Coins);
         var Cbuf = Buffer.alloc(8);
         Cbuf.writeBigUInt64BE(biguint,0,8);
