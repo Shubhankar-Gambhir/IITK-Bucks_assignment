@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const app = express();
 
 let data = new Map()
-let peer = ['http://17505626.ngrok.io' ,'http://52d3004ed431.ngrok.io']
+let peer = ['http://17505626.ngrok.io' ,'http://52d3004ed431.ngrok.io']//temporary urls
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.post('/add',function(req,res){
