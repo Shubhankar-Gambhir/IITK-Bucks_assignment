@@ -15,7 +15,7 @@ app.post('/start', function(req,res){
     mine_json["result"] = "searching";
     mine_json["nonce"] = -1;
     process = fork('./find_nonce.js')
-    const data = req.data
+    const data = req.body.data
 
     process.send({ data,target });   // listen for messages from forked process
 
